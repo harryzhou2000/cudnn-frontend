@@ -55,9 +55,10 @@ def atomic_add_float32(
     ip=None,
 ) -> Float32:
     old_value = nvvm.atomicrmw(
-        AtomicOpKind.FADD,
-        ptr,
-        value.ir_value(loc=loc, ip=ip),
+        res=T.f32(),
+        op=AtomicOpKind.FADD,
+        ptr=ptr,
+        a=value.ir_value(loc=loc, ip=ip),
         loc=loc,
         ip=ip,
     )
